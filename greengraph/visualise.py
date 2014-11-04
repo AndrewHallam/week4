@@ -1,4 +1,7 @@
 ### "visualise"
+from StringIO import StringIO
+import png
+from itertools import izip
 
 def show_green_in_png(data):
     image=png.Reader(file=StringIO(data.content)).asRGB()
