@@ -1,11 +1,13 @@
 ### "png"
 
+import png
+from itertools import izip
+from  URL from map_at
+
 def is_green(r,g,b):
   threshold=1.1
   return g>r*threshold and g>b*threshold
 
-import png
-from itertools import izip
 
 def count_green_in_png(data):
     image=png.Reader(file=StringIO(data.content)).asRGB()
