@@ -14,6 +14,3 @@ def count_green_in_png(data):
         pixels=izip(*[iter(row)]*3)
         count+=sum(1 for pixel in pixels if is_green(*pixel))
     return count
-
-from StringIO import StringIO
-print count_green_in_png(map_at(*london_location))
