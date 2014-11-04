@@ -13,8 +13,3 @@ def map_at(lat,long, satellite=False, zoom=12,
     if satellite:
         params["maptype"]="satellite"
     return requests.get(base,params=params)
-
-
-map_response=map_at(51.5072, -0.1275, zoom=10)
-url=map_response.url
-print url
