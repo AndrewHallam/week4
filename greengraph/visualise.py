@@ -1,5 +1,6 @@
 ### "visualise"
 from StringIO import StringIO
+from pnggreen import is_green
 import png
 from itertools import izip
 

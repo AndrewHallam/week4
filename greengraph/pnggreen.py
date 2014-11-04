@@ -3,6 +3,7 @@
 import png
 from itertools import izip
 from  URL import map_at
+from StringIO import StringIO
 
 def is_green(r,g,b):
   threshold=1.1
