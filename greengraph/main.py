@@ -6,16 +6,16 @@ from pnggreen import count_green_in_png
 from geolocation import geolocate
 from points import location_sequence
 import numpy as np
-import matplotlib.pyplot as plt
 
 matplotlib.use('Agg')
 
 def plotgreengraph(city1, city2):
+   import matplotlib.pyplot as plt 
    loca1=geolocate(city1)
    loca2=geolocate(city2)
    centre=np.mean(np.array([loca1, loca2]), axis=0)
    
-   with open('green1.png','w') as green:
+   with open('green_{}_{}.png'.format(city1,city2),'w') as green:
       green.write(show_green_in_png(map_at(centre[0],centre[1],
         zoom=10,satellite=True)))
              
@@ -25,11 +25,8 @@ def plotgreengraph(city1, city2):
           for location in location_sequence(
               geolocate(city1),
               geolocate(city2),10)])
-   plt.savefig('greengraph1.png')   
+   plt.savefig('greengraph_{}_{}.png'.format(city1,city2))   
          
-    
-plotgreengraph("London","Birmingham")
-#london_location=geolocate("London")
 #print london_location
 
 #map_response=map_at(51.5072, -0.1275, zoom=10)
