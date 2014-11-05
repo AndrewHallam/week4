@@ -1,4 +1,4 @@
-### "save"
+### This is the main body of the code which will actually output the plots
 import matplotlib
 from visualise import show_green_in_png
 from URL import map_at
@@ -26,31 +26,3 @@ def plotgreengraph(city1, city2):
               geolocate(city1),
               geolocate(city2),10)])
    plt.savefig('greengraph_{}_{}.png'.format(city1,city2))   
-         
-#print london_location
-
-#map_response=map_at(51.5072, -0.1275, zoom=10)
-#url=map_response.url
-#print url
-
-#print count_green_in_png(map_at(*london_location))
-
-#[count_green_in_png(map_at(*location,zoom=10,satellite=True))
-#            for location in location_sequence(
-#                geolocate("London"),
-#                geolocate("Birmingham"),
-#                10)]
-
-#matplotlib.use('Agg')
-        
-#with open('green.png','w') as green:
-#    green.write(show_green_in_png(map_at(*london_location,
-#        zoom=10,satellite=True)))
-
-#plt.plot([
-#    count_green_in_png(
-#        map_at(*location,zoom=10,satellite=True))
-#          for location in location_sequence(
-#              geolocate("London"),
-#              geolocate("Birmingham"),10)])
-#plt.savefig('greengraph.png')
