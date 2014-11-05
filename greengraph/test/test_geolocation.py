@@ -1,5 +1,5 @@
-from geolocation import geolocate
-from nose.tools import assert_raises, assert_equal
+from ..geolocation import geolocate
+from nose.tools import assert_raises, assert_almost_equal
 
 # Test whether a nonstring raises an error.
 def test_nonstring():
