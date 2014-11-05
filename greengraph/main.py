@@ -5,40 +5,55 @@ from URL import map_at
 from pnggreen import count_green_in_png
 from geolocation import geolocate
 from points import location_sequence
-
-london_location=geolocate("London")
-print london_location
-
-map_response=map_at(51.5072, -0.1275, zoom=10)
-url=map_response.url
-print url
-
-print count_green_in_png(map_at(*london_location))
-
-[count_green_in_png(map_at(*location,zoom=10,satellite=True))
-            for location in location_sequence(
-                geolocate("London"),
-                geolocate("Birmingham"),
-                10)]
-
-matplotlib.use('Agg')
+import numpy as np
 import matplotlib.pyplot as plt
 
-#open('asdf.png','w').write(
-#    show_green_in_png(
-#        map_at(*london_location,
-#        zoom=10,satellite=True)
-#    )
-#    )
-        
-with open('green.png','w') as green:
-    green.write(show_green_in_png(map_at(*london_location,
-        zoom=10,satellite=True)))
+matplotlib.use('Agg')
 
-plt.plot([
-    count_green_in_png(
+def plotgreengraph(city1, city2):
+   loca1=geolocate(city1)
+   loca2=geolocate(city2)
+   centre=np.mean(np.array([loca1, loca2]), axis=0)
+   
+   with open('green1.png','w') as green:
+      green.write(show_green_in_png(map_at(centre[0],centre[1],
+        zoom=10,satellite=True)))
+             
+   plt.plot([
+   count_green_in_png(
         map_at(*location,zoom=10,satellite=True))
           for location in location_sequence(
-              geolocate("London"),
-              geolocate("Birmingham"),10)])
-plt.savefig('greengraph.png')
+              geolocate(city1),
+              geolocate(city2),10)])
+   plt.savefig('greengraph1.png')   
+         
+    
+plotgreengraph("London","Birmingham")
+#london_location=geolocate("London")
+#print london_location
+
+#map_response=map_at(51.5072, -0.1275, zoom=10)
+#url=map_response.url
+#print url
+
+#print count_green_in_png(map_at(*london_location))
+
+#[count_green_in_png(map_at(*location,zoom=10,satellite=True))
+#            for location in location_sequence(
+#                geolocate("London"),
+#                geolocate("Birmingham"),
+#                10)]
+
+#matplotlib.use('Agg')
+        
+#with open('green.png','w') as green:
+#    green.write(show_green_in_png(map_at(*london_location,
+#        zoom=10,satellite=True)))
+
+#plt.plot([
+#    count_green_in_png(
+#        map_at(*location,zoom=10,satellite=True))
+#          for location in location_sequence(
+#              geolocate("London"),
+#              geolocate("Birmingham"),10)])
+#plt.savefig('greengraph.png')
