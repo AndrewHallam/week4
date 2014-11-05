@@ -6,7 +6,6 @@ from itertools import izip
 
 def show_green_in_png(data):
     image=png.Reader(file=StringIO(data.content)).asRGB()
-    count = 0
     out=[]
     for row in image[2]:
         outrow=[]

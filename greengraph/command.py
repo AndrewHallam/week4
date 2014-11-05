@@ -6,7 +6,7 @@ def process():
    parser = ArgumentParser(description = "Look at green space between two locations.")
 
    parser.add_argument('loc1')
-   parser.add_argument('--loc2')
+   parser.add_argument('loc2')
 
    arguments= parser.parse_args()
    
